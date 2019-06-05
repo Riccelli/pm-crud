@@ -75,7 +75,7 @@ Public Class DadosClientes
 
         Dim dt As New DataTable
         Dim ds As New DataSet()
-        strInstrucao = "SELECT IdCliente, Nome, Endereco, Telefone, Email, Ativo FROM Clientes"
+        strInstrucao = "SELECT IdCliente, Nome, Endereco, Cidade, Telefone, Email, Ativo FROM Clientes"
         objCommand.CommandText = strInstrucao
         objCommand.Connection = objConexao
 

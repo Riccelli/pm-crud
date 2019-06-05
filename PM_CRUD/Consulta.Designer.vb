@@ -31,12 +31,14 @@ Partial Class Consulta
         Me.Ativo = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.btnAlterar = New System.Windows.Forms.Button()
         Me.btnExcluir = New System.Windows.Forms.Button()
-        Me.btnVoltar = New System.Windows.Forms.Button()
+        Me.btnSair = New System.Windows.Forms.Button()
+        Me.btnNovo = New System.Windows.Forms.Button()
+        Me.Cidade = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.SuspendLayout()
         '
         'lsvDados
         '
-        Me.lsvDados.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.Código, Me.Nome, Me.Endereço, Me.Telefone, Me.Email, Me.Ativo})
+        Me.lsvDados.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.Código, Me.Nome, Me.Endereço, Me.Cidade, Me.Telefone, Me.Email, Me.Ativo})
         Me.lsvDados.FullRowSelect = True
         Me.lsvDados.GridLines = True
         Me.lsvDados.Location = New System.Drawing.Point(12, 12)
@@ -50,22 +52,27 @@ Partial Class Consulta
         'Código
         '
         Me.Código.Text = "Código"
+        Me.Código.Width = 45
         '
         'Nome
         '
         Me.Nome.Text = "Nome"
+        Me.Nome.Width = 150
         '
         'Endereço
         '
         Me.Endereço.Text = "Endereço"
+        Me.Endereço.Width = 120
         '
         'Telefone
         '
         Me.Telefone.Text = "Telefone"
+        Me.Telefone.Width = 80
         '
         'Email
         '
         Me.Email.Text = "Email"
+        Me.Email.Width = 120
         '
         'Ativo
         '
@@ -73,7 +80,7 @@ Partial Class Consulta
         '
         'btnAlterar
         '
-        Me.btnAlterar.Location = New System.Drawing.Point(12, 335)
+        Me.btnAlterar.Location = New System.Drawing.Point(93, 335)
         Me.btnAlterar.Name = "btnAlterar"
         Me.btnAlterar.Size = New System.Drawing.Size(75, 23)
         Me.btnAlterar.TabIndex = 1
@@ -82,34 +89,48 @@ Partial Class Consulta
         '
         'btnExcluir
         '
-        Me.btnExcluir.Location = New System.Drawing.Point(94, 335)
+        Me.btnExcluir.Location = New System.Drawing.Point(174, 335)
         Me.btnExcluir.Name = "btnExcluir"
         Me.btnExcluir.Size = New System.Drawing.Size(75, 23)
         Me.btnExcluir.TabIndex = 2
         Me.btnExcluir.Text = "Excluir"
         Me.btnExcluir.UseVisualStyleBackColor = True
         '
-        'btnVoltar
+        'btnSair
         '
-        Me.btnVoltar.Location = New System.Drawing.Point(176, 335)
-        Me.btnVoltar.Name = "btnVoltar"
-        Me.btnVoltar.Size = New System.Drawing.Size(75, 23)
-        Me.btnVoltar.TabIndex = 3
-        Me.btnVoltar.Text = "Voltar"
-        Me.btnVoltar.UseVisualStyleBackColor = True
+        Me.btnSair.Location = New System.Drawing.Point(570, 335)
+        Me.btnSair.Name = "btnSair"
+        Me.btnSair.Size = New System.Drawing.Size(75, 23)
+        Me.btnSair.TabIndex = 3
+        Me.btnSair.Text = "Sair"
+        Me.btnSair.UseVisualStyleBackColor = True
+        '
+        'btnNovo
+        '
+        Me.btnNovo.Location = New System.Drawing.Point(12, 335)
+        Me.btnNovo.Name = "btnNovo"
+        Me.btnNovo.Size = New System.Drawing.Size(75, 23)
+        Me.btnNovo.TabIndex = 4
+        Me.btnNovo.Text = "Novo"
+        Me.btnNovo.UseVisualStyleBackColor = True
+        '
+        'Cidade
+        '
+        Me.Cidade.Text = "Cidade"
         '
         'Consulta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(657, 370)
-        Me.Controls.Add(Me.btnVoltar)
+        Me.Controls.Add(Me.btnNovo)
+        Me.Controls.Add(Me.btnSair)
         Me.Controls.Add(Me.btnExcluir)
         Me.Controls.Add(Me.btnAlterar)
         Me.Controls.Add(Me.lsvDados)
         Me.Name = "Consulta"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Consulta"
+        Me.Text = "Cadastro de Clientes"
         Me.ResumeLayout(False)
 
     End Sub
@@ -117,11 +138,13 @@ Partial Class Consulta
     Friend WithEvents lsvDados As ListView
     Friend WithEvents btnAlterar As Button
     Friend WithEvents btnExcluir As Button
-    Friend WithEvents btnVoltar As Button
+    Friend WithEvents btnSair As Button
     Friend WithEvents Código As ColumnHeader
     Friend WithEvents Nome As ColumnHeader
     Friend WithEvents Endereço As ColumnHeader
     Friend WithEvents Telefone As ColumnHeader
     Friend WithEvents Email As ColumnHeader
     Friend WithEvents Ativo As ColumnHeader
+    Friend WithEvents btnNovo As Button
+    Friend WithEvents Cidade As ColumnHeader
 End Class
