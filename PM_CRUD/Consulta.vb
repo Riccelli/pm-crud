@@ -48,9 +48,12 @@ Public Class Consulta
         If lsvDados.SelectedItems.Count > 0 Then
             Dim nome As String
             nome = lsvDados.Items(index).SubItems(1).Text
-            Dim codigo As Integer = Integer.Parse(lsvDados.Items(Me.index).Text)
-            ExcluirRegistro(Integer.Parse(lsvDados.Items(Me.index).Text))
-            CarregarListView()
+            Dim ret = MessageBox.Show("Confirma a exclusão do cliente " & nome & " ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
+            If ret = DialogResult.Yes Then
+                Dim IdCliente As Integer = Integer.Parse(lsvDados.Items(Me.index).Text)
+                ExcluirRegistro(IdCliente)
+                CarregarListView()
+            End If
         Else
             MessageBox.Show("Por favor, selecione um cliente a ser excluído!", "Atenção")
         End If
@@ -134,10 +137,13 @@ Public Class Consulta
 
     Private Sub btnDeleteWebApi_Click(sender As Object, e As EventArgs) Handles btnDeleteWebApi.Click
         If lsvDados.SelectedItems.Count > 0 Then
-            Dim nome As String
-            nome = lsvDados.Items(index).SubItems(1).Text
-            ExcluirRegistroWebApi(Integer.Parse(lsvDados.Items(Me.index).Text))
-            GetClientesWebApi()
+            Dim nome = lsvDados.Items(index).SubItems(1).Text
+            Dim ret = MessageBox.Show("Confirma a exclusão do cliente " & nome & " ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
+            If ret = DialogResult.Yes Then
+                Dim IdCliente = Integer.Parse(lsvDados.Items(Me.index).Text)
+                ExcluirRegistroWebApi(IdCliente)
+                GetClientesWebApi()
+            End If
         Else
             MessageBox.Show("Por favor, selecione um cliente a ser excluído!", "Atenção")
         End If
