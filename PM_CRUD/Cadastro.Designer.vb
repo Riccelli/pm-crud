@@ -38,6 +38,9 @@ Partial Class Cadastro
         Me.btnSair = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.lblCodigo = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtUrl = New System.Windows.Forms.TextBox()
+        Me.btnSaveWebAPI = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -173,11 +176,40 @@ Partial Class Cadastro
         Me.lblCodigo.Size = New System.Drawing.Size(0, 13)
         Me.lblCodigo.TabIndex = 17
         '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(19, 327)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(67, 13)
+        Me.Label8.TabIndex = 20
+        Me.Label8.Text = "Web API url:"
+        '
+        'txtUrl
+        '
+        Me.txtUrl.Location = New System.Drawing.Point(92, 324)
+        Me.txtUrl.Name = "txtUrl"
+        Me.txtUrl.Size = New System.Drawing.Size(218, 20)
+        Me.txtUrl.TabIndex = 19
+        Me.txtUrl.Text = "http://localhost:54458/api/Cliente/"
+        '
+        'btnSaveWebAPI
+        '
+        Me.btnSaveWebAPI.Location = New System.Drawing.Point(19, 295)
+        Me.btnSaveWebAPI.Name = "btnSaveWebAPI"
+        Me.btnSaveWebAPI.Size = New System.Drawing.Size(187, 23)
+        Me.btnSaveWebAPI.TabIndex = 18
+        Me.btnSaveWebAPI.Text = "Inserir/Alterar usando WebApi"
+        Me.btnSaveWebAPI.UseVisualStyleBackColor = True
+        '
         'Cadastro
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(326, 277)
+        Me.ClientSize = New System.Drawing.Size(326, 373)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.txtUrl)
+        Me.Controls.Add(Me.btnSaveWebAPI)
         Me.Controls.Add(Me.lblCodigo)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.btnSair)
@@ -218,4 +250,7 @@ Partial Class Cadastro
     Public WithEvents txtEmail As TextBox
     Friend WithEvents Label7 As Label
     Public WithEvents lblCodigo As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents txtUrl As TextBox
+    Friend WithEvents btnSaveWebAPI As Button
 End Class

@@ -1,4 +1,7 @@
-﻿Public Class Consulta
+﻿Imports System.Net.Http
+Imports Newtonsoft.Json
+
+Public Class Consulta
     Public index As Integer = -1
 
     Private Sub Consulta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -45,15 +48,9 @@
         If lsvDados.SelectedItems.Count > 0 Then
             Dim nome As String
             nome = lsvDados.Items(index).SubItems(1).Text
-            If MessageBox.Show(
-                    "Confirma a exclusão do cliente " & nome & " ?",
-                    "Atenção",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question,
-                    MessageBoxDefaultButton.Button2) = 1 Then
-                ExcluirRegistro(Integer.Parse(lsvDados.Items(Me.index).Text))
-                CarregarListView()
-            End If
+            Dim codigo As Integer = Integer.Parse(lsvDados.Items(Me.index).Text)
+            ExcluirRegistro(Integer.Parse(lsvDados.Items(Me.index).Text))
+            CarregarListView()
         Else
             MessageBox.Show("Por favor, selecione um cliente a ser excluído!", "Atenção")
         End If
@@ -98,5 +95,58 @@
         instancia.lblCodigo.Text = "0"
         instancia.ShowDialog()
         CarregarListView()
+    End Sub
+
+    Private Sub btnGetWebAPI_Click(sender As Object, e As EventArgs) Handles btnGetWebAPI.Click
+        GetClientesWebApi()
+    End Sub
+
+    Private Async Sub GetClientesWebApi()
+        Using client = New HttpClient()
+            Using response = Await client.GetAsync(txtUrl.Text)
+                If response.IsSuccessStatusCode Then
+                    Dim str = Await response.Content.ReadAsStringAsync()
+                    Dim clientes = JsonConvert.DeserializeObject(Of DadosClientes.ClientesObj())(str).ToList()
+
+                    lsvDados.Items.Clear()
+
+                    For Each cliente As DadosClientes.ClientesObj In clientes
+                        Dim lista As New ListViewItem
+                        lista.Text = cliente.IdCliente
+                        lista.SubItems.Add(cliente.Nome)
+                        lista.SubItems.Add(cliente.Endereco)
+                        lista.SubItems.Add(cliente.Cidade)
+                        lista.SubItems.Add(cliente.Telefone)
+                        lista.SubItems.Add(cliente.Email)
+
+                        If cliente.Ativo Then
+                            lista.SubItems.Add("Sim")
+                        Else
+                            lista.SubItems.Add("Não")
+                        End If
+
+                        lsvDados.Items.Add(lista)
+                    Next
+                End If
+            End Using
+        End Using
+    End Sub
+
+    Private Sub btnDeleteWebApi_Click(sender As Object, e As EventArgs) Handles btnDeleteWebApi.Click
+        If lsvDados.SelectedItems.Count > 0 Then
+            Dim nome As String
+            nome = lsvDados.Items(index).SubItems(1).Text
+            ExcluirRegistroWebApi(Integer.Parse(lsvDados.Items(Me.index).Text))
+            GetClientesWebApi()
+        Else
+            MessageBox.Show("Por favor, selecione um cliente a ser excluído!", "Atenção")
+        End If
+    End Sub
+
+    Private Async Sub ExcluirRegistroWebApi(ByVal id As Integer)
+        Using client = New HttpClient()
+            Dim url = txtUrl.Text & CStr(id)
+            Dim retorno = Await client.DeleteAsync(url)
+        End Using
     End Sub
 End Class

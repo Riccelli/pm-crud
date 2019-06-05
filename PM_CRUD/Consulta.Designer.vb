@@ -26,6 +26,7 @@ Partial Class Consulta
         Me.Código = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Nome = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Endereço = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Cidade = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Telefone = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Email = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Ativo = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -33,7 +34,10 @@ Partial Class Consulta
         Me.btnExcluir = New System.Windows.Forms.Button()
         Me.btnSair = New System.Windows.Forms.Button()
         Me.btnNovo = New System.Windows.Forms.Button()
-        Me.Cidade = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.btnGetWebAPI = New System.Windows.Forms.Button()
+        Me.btnDeleteWebApi = New System.Windows.Forms.Button()
+        Me.txtUrl = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'lsvDados
@@ -44,7 +48,7 @@ Partial Class Consulta
         Me.lsvDados.Location = New System.Drawing.Point(12, 12)
         Me.lsvDados.MultiSelect = False
         Me.lsvDados.Name = "lsvDados"
-        Me.lsvDados.Size = New System.Drawing.Size(633, 317)
+        Me.lsvDados.Size = New System.Drawing.Size(633, 249)
         Me.lsvDados.TabIndex = 0
         Me.lsvDados.UseCompatibleStateImageBehavior = False
         Me.lsvDados.View = System.Windows.Forms.View.Details
@@ -63,6 +67,10 @@ Partial Class Consulta
         '
         Me.Endereço.Text = "Endereço"
         Me.Endereço.Width = 120
+        '
+        'Cidade
+        '
+        Me.Cidade.Text = "Cidade"
         '
         'Telefone
         '
@@ -114,15 +122,50 @@ Partial Class Consulta
         Me.btnNovo.Text = "Novo"
         Me.btnNovo.UseVisualStyleBackColor = True
         '
-        'Cidade
+        'btnGetWebAPI
         '
-        Me.Cidade.Text = "Cidade"
+        Me.btnGetWebAPI.Location = New System.Drawing.Point(12, 267)
+        Me.btnGetWebAPI.Name = "btnGetWebAPI"
+        Me.btnGetWebAPI.Size = New System.Drawing.Size(156, 23)
+        Me.btnGetWebAPI.TabIndex = 5
+        Me.btnGetWebAPI.Text = "Carregar usando WebApi"
+        Me.btnGetWebAPI.UseVisualStyleBackColor = True
+        '
+        'btnDeleteWebApi
+        '
+        Me.btnDeleteWebApi.Location = New System.Drawing.Point(174, 267)
+        Me.btnDeleteWebApi.Name = "btnDeleteWebApi"
+        Me.btnDeleteWebApi.Size = New System.Drawing.Size(156, 23)
+        Me.btnDeleteWebApi.TabIndex = 6
+        Me.btnDeleteWebApi.Text = "Excluir usando WebApi"
+        Me.btnDeleteWebApi.UseVisualStyleBackColor = True
+        '
+        'txtUrl
+        '
+        Me.txtUrl.Location = New System.Drawing.Point(85, 296)
+        Me.txtUrl.Name = "txtUrl"
+        Me.txtUrl.Size = New System.Drawing.Size(245, 20)
+        Me.txtUrl.TabIndex = 7
+        Me.txtUrl.Text = "http://localhost:54458/api/Cliente/"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(12, 299)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(67, 13)
+        Me.Label1.TabIndex = 8
+        Me.Label1.Text = "Web API url:"
         '
         'Consulta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(657, 370)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.txtUrl)
+        Me.Controls.Add(Me.btnDeleteWebApi)
+        Me.Controls.Add(Me.btnGetWebAPI)
         Me.Controls.Add(Me.btnNovo)
         Me.Controls.Add(Me.btnSair)
         Me.Controls.Add(Me.btnExcluir)
@@ -132,6 +175,7 @@ Partial Class Consulta
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Cadastro de Clientes"
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -147,4 +191,8 @@ Partial Class Consulta
     Friend WithEvents Ativo As ColumnHeader
     Friend WithEvents btnNovo As Button
     Friend WithEvents Cidade As ColumnHeader
+    Friend WithEvents btnGetWebAPI As Button
+    Friend WithEvents btnDeleteWebApi As Button
+    Friend WithEvents txtUrl As TextBox
+    Friend WithEvents Label1 As Label
 End Class
